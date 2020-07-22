@@ -239,7 +239,36 @@ I	ISP
 «много интерфейсов, специально предназначенных для клиентов, лучше, 
 чем один интерфейс общего назначения».
 */
+class workerInterface
+{
+public:
+	virtual void function_work() = 0;
+	virtual void function_sleep() = 0;
+};
 
+class HumanWorker :public workerInterface
+{
+public:
+	void function_work() {
+		printf("works");
+	}
+
+	void function_sleep() {
+		printf("sleep");
+	}
+};
+
+class RobotWorker :public workerInterface
+{
+public:
+	void function_work() {
+		printf("works");
+	}
+
+	void  function_sleep()	{
+		// No need
+	}
+};
 
 /*
 D	DIP
