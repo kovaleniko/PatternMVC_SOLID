@@ -2,5 +2,7 @@
 #include "MVC.h"
 
 int main() {
-	mvc();
+	//mvc();
+	//ocp();
+	//liskov();
 }

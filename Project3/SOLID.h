@@ -1,5 +1,6 @@
 #pragma once
 #include "include.h"
+//S.O.L.I.D.
 /*
 S	SRP
 Принцип единственной ответственности (The Single Responsibility Principle)
@@ -124,6 +125,11 @@ public:
 	}
 
 };
+void ocp() {
+	std::shared_ptr<square_good> sh(new square_good);
+	draw_good exp;
+	exp.paint(sh);
+}
 /*
 L	LSP
 Принцип подстановки Барбары Лисков (The Liskov Substitution Principle)
@@ -206,6 +212,7 @@ public:
 	void SetReferenceTemperature(int referenceTemperature)
 	{
 		std::cout << "T-" << referenceTemperature << " grad\n";
+		TemperatureController::SetReferenceTemperature(referenceTemperature);
 	}
 
 	int GetTemperature() const
@@ -223,14 +230,15 @@ public:
 		// Тут шаманские пляски, чтобы термостат ниспослал нам хорошую погоду
 	}
 };
+
 void liskov() {
 	TemperatureController* pTempCtrl = new Brand_A_TemperatureController;
 	pTempCtrl->SetReferenceTemperature(10);
 	pTempCtrl->InitializeDevice();
 	//бядабяда....
-	TemperatureController* pTempCtrl = new Brand_C_TemperatureController;
-	pTempCtrl->SetReferenceTemperature(10);
-	pTempCtrl->InitializeDevice();
+	TemperatureController* pTempCtrl1 = new Brand_C_TemperatureController;
+	pTempCtrl1->SetReferenceTemperature(10);
+	pTempCtrl1->InitializeDevice();
 }
 
 /*
@@ -275,3 +283,8 @@ D	DIP
 Принцип инверсии зависимостей (The Dependency Inversion Principle)
 «Зависимость на Абстракциях. Нет зависимости на что-то конкретное».
 */
+/*
+1.Модули верхних уровней не должны зависеть от модулей нижних уровней. Оба типа модулей должны зависеть от абстракций.
+2.Абстракции не должны зависеть от деталей. Детали должны зависеть от абстракций.
+*/
+//добавить пример
