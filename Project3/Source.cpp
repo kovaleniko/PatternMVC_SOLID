@@ -4,5 +4,5 @@
 int main() {
 	//mvc();
 	//ocp();
-	//liskov();
+	liskov();
 }

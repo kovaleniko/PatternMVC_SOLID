@@ -212,7 +212,7 @@ public:
 	void SetReferenceTemperature(int referenceTemperature)
 	{
 		std::cout << "T-" << referenceTemperature << " grad\n";
-		TemperatureController::SetReferenceTemperature(referenceTemperature);
+		//TemperatureController::SetReferenceTemperature(referenceTemperature);
 	}
 
 	int GetTemperature() const
@@ -287,4 +287,28 @@ D	DIP
 1.Модули верхних уровней не должны зависеть от модулей нижних уровней. Оба типа модулей должны зависеть от абстракций.
 2.Абстракции не должны зависеть от деталей. Детали должны зависеть от абстракций.
 */
+class DataBaseInterface {
+public:
+	virtual bool connection()=0;
+};
+class MySQLConnection : public DataBaseInterface {
+public:
+	bool connection() override{
+		return "Database connection";
+	}
+};
+
+class PasswordReminder {
+private:
+	DataBaseInterface* DB;
+
+public: PasswordReminder(DataBaseInterface* db) {
+	DB = db;
+	db->connection();
+}
+};
+
+void dip() {
+	
+}
 //добавить пример
